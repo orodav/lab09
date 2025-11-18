@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="12.1.2">
 <file name="C:\Users\OroVio\Desktop\INGEGNERIA Informatica\Anno II\OOP - Programmazione ad Oggetti\javalab\projects\oop-lab\lab09\91-bad-gui-io\src\main\java\it\unibo\mvc\BadIOGUI.java">
-<error line="3" column="8" severity="error" message="Unused import - javax.swing.BoxLayout." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
-<error line="17" column="8" severity="error" message="Unused import - java.nio.file.Files." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
-<error line="18" column="8" severity="error" message="Unused import - java.util.List." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
 </file>
 </checkstyle>

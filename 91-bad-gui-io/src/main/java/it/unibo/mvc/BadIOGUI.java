@@ -26,6 +26,7 @@ import java.util.Random;
  * such is just to be used to learn the basics, not as a template for your
  * applications.
  */
+
 public class BadIOGUI {
 
     private static final String TITLE = "A very simple GUI application";
@@ -66,7 +67,6 @@ public class BadIOGUI {
                  */
                 try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
-                    
                 } catch (final IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace(); // NOPMD: allowed as this is just an exercise
@@ -78,8 +78,8 @@ public class BadIOGUI {
             @Override
             public void actionPerformed(final ActionEvent ignored) {
                 try {
-                    List<String> wordRead = Files.readAllLines(Path.of(PATH), StandardCharsets.UTF_8);
-                    for (final String word : wordRead){
+                    final List<String> wordRead = Files.readAllLines(Path.of(PATH), StandardCharsets.UTF_8);
+                    for (final String word : wordRead) {
                         System.out.println(word); //NOPMD: exercises
                     }
                 } catch (final IOException e) {
