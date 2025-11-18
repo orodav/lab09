@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Random;
-
 /**
  * This class is a simple application that writes a random number on a file.
  *
@@ -41,10 +41,15 @@ public class BadIOGUI {
      */
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
+        final JPanel myFrame = new JPanel();
         canvas.setLayout(new BorderLayout());
-        final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
-        frame.setContentPane(canvas);
+        myFrame.setLayout(new BoxLayout(myFrame, BoxLayout.Y_AXIS));
+        final JButton write = new JButton("Button Write");
+        final JButton myButton = new JButton("Button Read");
+        //canvas.add(write, BorderLayout.CENTER);
+        myFrame.add(write, BorderLayout.CENTER);
+        myFrame.add(myButton, BorderLayout.CENTER);
+        frame.setContentPane(myFrame);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
@@ -61,9 +66,24 @@ public class BadIOGUI {
                  */
                 try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
+                    
                 } catch (final IOException e) {
                     JOptionPane.showMessageDialog(frame, e, "Error", JOptionPane.ERROR_MESSAGE);
                     e.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
+            }
+        });
+
+        myButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent ignored) {
+                try {
+                    List<String> wordRead = Files.readAllLines(Path.of(PATH), StandardCharsets.UTF_8);
+                    for (final String word : wordRead){
+                        System.out.println(word); //NOPMD: exercises
+                    }
+                } catch (final IOException e) {
+                    e.printStackTrace(); //NOPMD: exercises
                 }
             }
         });
@@ -82,6 +102,7 @@ public class BadIOGUI {
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
