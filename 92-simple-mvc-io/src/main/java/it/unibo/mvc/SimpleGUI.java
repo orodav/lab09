@@ -16,15 +16,14 @@ import java.io.IOException;
 public final class SimpleGUI {
 
     private static final int PROPORTION = 5;
-    private final Controller controller;
+    private final Controller controller = new Controller();
     private final JFrame frame = new JFrame();
     private final JTextArea textArea = new JTextArea();
 
     /**
-     * @param controller based on Controller class
+     * Constructor of the class.
      */
-    public SimpleGUI(final Controller controller) {
-        this.controller = controller;
+    public SimpleGUI() {
         final JPanel myPanel = new JPanel();
         myPanel.setLayout(new BorderLayout());
         final JButton save = new JButton("Save");
@@ -55,10 +54,9 @@ public final class SimpleGUI {
         }
 
     /**
-     * @param args main for strarting the GUI
+     * @param args ignored
      */
     public static void main(final String[] args) {
-        final Controller controller = new Controller();
-        new SimpleGUI(controller).display();
+        new SimpleGUI().display();
     }
 }
